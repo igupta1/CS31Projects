@@ -1,0 +1,56 @@
+ISHAAN GUPTA
+ID: 905917973
+CS 31 Project 1 Report
+
+To get unusual results in original.cpp I first tried inputting negative numbers.
+ 
+Input:
+How many registered voters were surveyed? -10
+How many of them say they will vote for Gavin? 5
+How many of them say they will vote for Brian? 2
+
+Output:
+-50.0% say they will vote for Gavin.
+-20.0% say they will vote for Brian.
+Gavin is predicted to win the election.
+
+The number of registered voters cannot be a negative number because there cannot be "negative" people. The percentage of voters for a specific candidate cannot be a negative number as well.
+
+Next, I tried making the number of registered voters less than the votes for individual candidates.
+
+Input:
+How many registered voters were surveyed? 10
+How many of them say they will vote for Gavin? 15
+How many of them say they will vote for Brian? 20
+
+Output:
+150.0% say they will vote for Gavin.
+200.0% say they will vote for Brian.
+Brian is predicted to win the election.
+
+There cannot be more votes for a candidate than there are registered voters because each voter only has one vote.
+
+
+
+
+
+In logic_error.cpp on line 20, instead of multiplying the ratio of voters for Gavin over the total number of voters by 100, I added 2 zeros so it would instead multiply by 10,000. This lead to the percentage of voters for Gavin to be 100 times greater than it actually was.
+
+Input:
+How many registered voters were surveyed? 10
+How many of them say they will vote for Gavin? 5
+How many of them say they will vote for Brian? 2
+
+Output:
+5000.0% say they will vote for Gavin.
+20.0% say they will vote for Brian.
+Gavin is predicted to win the election.
+
+
+
+
+
+In compile_error.cpp on line 10, I intentionally forgot the semicolon. Therefore it did not know that the declaration on line 10 ended and it gave an error of "error: expected initializer before 'int'" on line 11. Both line 10 and line 11 were disrupted causing both variables forBrian and forGavin to not be declared. As a result on like 16 it says "error: 'forGavin' was not declared in this scope" and on like 18 it says "error: 'forBrian' was not declared in this scope".
+
+The second intentional error I made was accidentally misspelling pctBrian as pctBrin. This variable was not declared initially and as a result it gave an error which said "error: 'pctBrin' was not declared in this scope".
+

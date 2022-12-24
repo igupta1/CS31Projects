@@ -1,0 +1,22 @@
+Ishaan Gupta
+UID: 905917973
+10/11/22
+Project 2 Report
+
+Obstacles I Overcame:
+
+- Figuring out how to calculate the tax based on different tax brackets was initially difficult. At first I wanted to start from the bottom and calculate the lowest tax bracket first, but then I realized that starting from the wealthiest tax bracket was much easier. By starting from the wealthiest bracket I could keep a temporary variable for the taxable income and subtract the cutoff for the previous tax bracket to figure out how much money needed to be taxed for the current tax bracket. Furthermore, by working from the top down I could simply change the tax rate in subsequent if statements to reflect subsequent tax brackets.
+
+- I also had trouble figuring out what to do if there were 2 erroneous cases and how to only print one error message. To solve this I used an else if because if an error was caught in a previous if or else if, it would never check a subsequent else if error case, which meant only one error message would be printed
+
+
+Test Data:
+
+- Empty string for name ("", 67000.43, "doctor", 3)
+- Negative number for taxable income ("Ishaan", -67000.43, "doctor", 3)
+- Empty string for occupation ("Ishaan", 67000.43, "", 3)
+- Negative number for number of children ("Ishaan", 67000.43, "doctor", -3)
+- Multiple erroneous inputs ("", -67000.43, "", -3)
+- Tax is negative ("Ishaan", 132.42, "nurse", 4)
+- Income is greater than 125000 and tax should not be reduced for children ("Ishaan", 225000.42, "lawyer", 4)
+- Occupation is nurse or teacher so tax rate changes ("Ishaan", 67000.43, "teacher", 3)

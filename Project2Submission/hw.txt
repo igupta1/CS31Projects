@@ -1,0 +1,57 @@
+Ishaan Gupta
+UID: 905917973
+10/11/22
+Homework 2
+
+Answer for #1:
+endlendl
+grendel
+
+Answer for #2:
+It prints a staircase which has the height and width of side with the top of the staircase being aligned to the left.
+
+Answer for #3:
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int side;
+
+    cout << "Enter a number: ";
+    cin >> side;
+
+    for (int i = 0; i < side; i++)
+    {
+        int j = i;
+        while (j >= 0)
+        {
+            cout << "#";
+            j--;
+        }
+        cout << "\n";
+    }
+}
+
+Answer for #4:
+
+switch (codeSection)
+{
+	case (281):
+            cout << "bigamy";
+            break;
+        case (321):
+        case (322):
+            cout << "selling illegal lottery tickets";
+            break;
+        case (383):
+            cout << "selling rancid butter";
+            break;
+        case (598):
+            cout << "injuring a bird in a public cemetery";
+            break;
+        default:
+            cout << "some other crime";
+}
+

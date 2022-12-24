@@ -1,0 +1,67 @@
+OBSTACLES
+
+As I was iterating through the string in my code, it was often difficult to keep track of my position within the string because sometimes I had to skip an index for certain situation. For example, the state code was 2 characters so after I read the two characters I had to add 2 to the count instead of 1 to get to the numbers. Situations like these sometimes made it difficult to keep track of where I was within the string.
+
+Additionally, I often ran into index out of bounds error and I had to add checks and if conditions to ensure that when I was iterating through the string I would not go out of bounds and past the end of the string.
+
+DESIGN OF PROGRAM
+
+For countSeats() first check if the string is a valid poll string and also check if the party character is in fact a letter. Then go through the string and wherever there is a digit and letter next to eachother, if its the right party letter add to the seat count. Otherwise if there's 2 digits and letter next to eachother, if its the right party letter add to the seat count.
+
+countSeats()
+{
+	check if its a valid poll string
+	check if the party is a letter
+	iterate through the string:
+		if its a digit and a character right after,
+			if its the right party character
+				add to seat count
+		if its a digit and then another digit and then a character right after,
+			if its the right party character
+				add to seat count
+
+}
+
+For isValidPollString, first iterate through the string. If the first two characters are a valid state code then in a nested loop, keep iterating through the rest of the string until you hit the end of the string or a comma. Check if there are digits after the state code and if there is a letter for the party after those digits before the comma. If any of these conditions fail return false. After iterating through the entire string, if the function has not returned false yet, return true.
+
+isValidPollString()
+{
+	iterate through the string:
+		check if the first 2 characters are a valid state code
+		iterate through the string until you reach a comma or the end of the string
+			check if its a digit after the state code
+			check if its another digit or character after the first digit
+			check if after 2 digits there is a party character
+	if it hasn't return false by now its a valid poll string
+}
+
+
+TEST DATA
+
+isValidPollString("NV5D,NY16D")
+- check if the program can read double digits and single digits before the party code
+isValidPollString("ZZ5D,NY16D")
+- check if the program can identify codes that are not states
+isValidPollString("nv5D,NY16D")
+- check if the program can read both uppercase and lowercase state codes
+isValidPollString("NV5D,NY16d")
+- check if the program can read both uppercase and lowercase party letters
+isValidPollString("")
+- check if the program can read the empty string, which is a valid string
+isValidPollString("VT,NV5D,NY16d")
+- check if the program can read a forecast with just the state code without any party or seat information
+isValidPollString("VT, NV5D,NY16d")
+- check if the program can identify this is not a valid string because of the space
+seats = -567
+countSeats("NV5D,NY16D", 'D', seats)
+- check if the method actually sets the seat count
+countSeats("NV5D,NY16D", 'd', seats)
+- check if the method can read from both uppercase and lowercase letter
+countSeats("NV5D,NY16D", 'r', seats)
+- check if the method can properly compare party strings and identify that there is no forecast for this party
+countSeats("NV5D, NY16D", 'd', seats)
+- check if the method properly calls isValidPollString to identify non valid poll strings
+countSeats("NV5D,NY16D", '-', seats)
+- check if the method properly calls isValidPollString to identify non valid party letters
+
+

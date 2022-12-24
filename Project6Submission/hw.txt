@@ -1,0 +1,254 @@
+Ishaan Gupta
+ID: 905917973
+
+1a)
+
+Errors:
+1. Cannot iterate pointer before printing. Change this by moving ptr-- after the cout statement in the loop
+2. 20 cannot be assigned to *ptr + 1. *ptr is a pointer and you cannot add it to an int. Change this with *(ptr+1) = 20;
+3. The loop prints backwards so the order the numbers are assigned must be reversed.
+
+Fixed Code:
+
+int main()
+{
+    int arr[3] = { 5, 10, 15 };
+    int* ptr = arr;
+    
+    *ptr = 10; // this fixes bug #3
+    *(ptr + 1) = 20; // this fixes bug #2
+    ptr += 2;
+    ptr[0] = 30; // this fixes bug #3
+    
+    while (ptr >= arr)
+    {
+        cout << *ptr << endl;
+        ptr--; // this fixes bug #1
+    }
+}
+
+
+1b)
+
+Error:
+In findMax, the pointer variable (ptr) is being passed by value instead of by reference. Change this by adding a & to the pToMax parameter and making it int*& pToMax
+
+void findMax(int arr[], int n, int*& pToMax)
+{
+	if (n <= 0)
+		return;
+	
+	pToMax = arr;
+	
+	for (int i = 1; i < n; i++)
+	{
+		if (arr[i] > *pToMax)
+			pToMax = arr + i;
+	}
+}
+
+int main()
+{
+	int nums[4] = { 5, 3, 15, 6 };
+	int* ptr = &nums[0];
+
+	findMax(nums, 4, ptr);
+	cout << "The maximum is at address " << ptr << endl;
+	cout << "It's at position " << ptr - nums << endl;
+	cout << "Its value is " << *ptr << endl;
+}
+
+1c)
+
+Error:
+Initially, Pointer ptr is not pointing to anything. Change this by creating a temp variable for ptr to point to.
+
+void computeCube(int n, int* ncubed)
+{
+    *ncubed = n * n * n;
+}
+
+int main()
+{
+    int temp;
+    int* ptr = &temp; // Creating variable a for ptr to point to.
+    computeCube(5, ptr);
+    cout << "Five cubed is " << *ptr << endl;
+}
+
+1d)
+
+Error:
+The function compares the CStrings themselves. The program will enter the loop but immediately return false because str1 != str2. We need to iterate through the string and compare the characters with pointers. Change this by using the dereference operator to compare the individual characters.
+
+bool strequal(const char str1[], const char str2[])
+{
+    while (*str1 != 0  &&  *str2 != 0)
+    {
+        if (*str1 != *str2)
+            return false;
+        str1++;
+        str2++;
+    }
+    return *str1 == *str2;
+}
+
+int main()
+{
+    char a[15] = "Chang";
+    char b[15] = "Zhang";
+    
+    if (strequal(a,b))
+        cout << "They're the same person!\n";
+}
+
+1e)
+
+Error:
+The getPtrToArray function returns the address of the array anArray. But this array is only initialized locally within the function, so the main method does not have access to it.
+
+2a)
+double* cat;
+
+2b)
+double mouse[5];
+
+2c)
+cat = mouse + 4;
+
+2d)
+*cat = 25;
+
+2e)
+*(mouse + 3) = 54;
+
+2f)
+cat -= 3;
+
+2g)
+cat[1] = 42;
+
+2h)
+cat[0] = 17;
+
+2i)
+bool d = (cat == mouse);
+
+2j)
+bool b = *cat == *(cat + 1);
+
+
+3a)
+
+double mean(const double* scores, int numScores)
+{
+    double total = 0;
+    for (int i = 0; i < numScores; i++)
+    {
+        total += *(scores+i);
+	}
+    return total/numScores;
+}
+
+3b)
+
+const char* findTheChar(const char* str, char chr)
+{
+    for (int k = 0; *(str+k) != 0; k++)
+    {
+        if (*(str+k) == chr)
+        {
+            return str+k;
+		}
+	}
+    
+    return nullptr;
+}
+
+3c)
+
+const char* findTheChar(const char* str, char chr)
+{
+    while (*str != 0)
+    {
+        if (*str == chr)
+        {
+            return str;
+		}
+        str++;
+    }
+    
+    return nullptr;
+}
+
+4)
+
+Function maxwell
+Returns the address of the larger value between a and b.
+
+Function swap1
+Swaps the locations of a and b, but this change is only a local change within the function since a and b are both passed by value
+
+Function swap2
+Swaps the values of at the locations of a and b
+
+int* ptr = maxwell(array, &array[2]);
+Assigns pointer ptr with the address of the larger of the 1st element of the array and 3rd element of the array. In this case its the location of the 1st element.
+
+*ptr = -1;
+Sets the value of where ptr is pointing to, which is the first element of the array to -1.
+
+ptr += 2;
+Adds 2 to ptr, now ptr is pointing to the third element of the array.
+
+ptr[1] = 9;
+Sets the value of the 4th element to 9
+
+*(array+1) = 79;
+Sets the value of the 2nd element in array to be 79
+
+cout << &array[5] - ptr << endl;
+Prints the address of the fifth element minus the address of ptr (which is the 2nd element). Output: 3
+
+swap1(&array[0], &array[1]);
+This does not do anything as the parameters are passed by value, and as a result, there is no change outside the method
+
+swap2(array, &array[2]);
+Swaps the value at the address of the first element, which is -1, with the value at the location of the second element, which was 4.
+
+for (int i = 0; i < 6; i++)
+	cout << array[i] << endl;
+Iterates through the array and prints out every element in the array.
+
+Output:
+4
+79
+-1
+9
+22
+19
+
+
+5)
+
+void removeS(char* msgPtr)
+{
+    char* ptr = msgPtr;
+    while (*msgPtr != 0)
+    {
+        *ptr = *msgPtr;
+        if (*ptr != 'S' && *ptr != 's')
+                ptr++;
+        msgPtr++;
+    }
+    *ptr = 0;
+}
+
+int main()
+{
+	char msg[50] = "She'll shave a massless princess.";
+	removeS(msg);
+	cout << msg;  // prints   he'll have a male prince.
+}
+
+

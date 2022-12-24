@@ -1,0 +1,41 @@
+OBSTACLES
+
+Finding a way to differentiate the golds from the silvers was difficult. After my code went through and found the gold's I didn't want those characters to be counted for the silvers so I created a boolean array to act a flag and check whether a correspond gold had already been found so it would not be counted again as a silver.
+
+For the silvers I needed a way to check matches that were in different indexes. A simple for loop wouldn't work because for an index in in the hidden word I needed to check the indexes in the probe word that were also ahead and behind of the current index. Therefore, I used nested for loops. The outer for loop went through the hidden word and the inner for loop went through the probe word.
+
+PSEUDOCODE
+
+main
+
+If the number of words in the file is zero or negative
+	terminate the program
+Get user input for number of rounds
+If the user enters an invalid number of rounds
+	terminate the program
+Repeat for the number of rounds
+	Get a random word and print the number of letters
+	call playOneRound to get the score
+	print our the number of tries
+	update average, max, min after every round and print
+
+
+playOneRound
+
+While the probe word is not the same as the hidden word
+	get the users probe word
+	if the users probe word has an incorrect number of letters
+		print error message
+	if the users probe word isn't in the file
+		print error message
+	go through hidden word
+		if its a match in the probe word
+			increment gold
+			mark it so it isn't recounted for silvers
+	go through hidden word
+		go through probe word
+			if the characters are a match
+				increment silver
+				mark it so it isn't recounted for a subsequent silver
+	print count of golds and silvers
+

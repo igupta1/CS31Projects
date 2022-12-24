@@ -1,0 +1,87 @@
+ISHAAN GUPTA
+UID: 905917973
+
+
+OBSTACLES
+For the split method, I wanted to sort the array in order to find the index where the splitter would be greater than the element. I had to use nested loops and use the bubble sort algorithm which was in the book and that took a while to understand what the algorithm was doing. I had to account for edge cases for all of the methods, such as when there were no elements in the array or if the value of n was negative and I had to have if conditions at the beginning of my methods to catch those situations.
+
+TEST DATA
+
+string h[7] = { "rishi", "margaret", "gordon", "tony", "", "john", "liz" };
+
+lookup(h, -2, "john")
+- Test that the lookup method can handle a bad input
+lookup(h, 3, "john")
+- Test that the lookup method only goes up until n and returns -1 if it doesn't find anything
+lookup(h, 6, "john")
+- Test that the lookup method works as it should
+
+appendToAll(h, -2, "?")
+- Test if the appendToAll method can handle bad input
+appendToAll(h, 5, "?")
+- Test if the appendToAll method only goes up to n and appends every element
+    
+positionOfMax(h, -2)
+- Test if the positionOfMax method can handle bad input
+positionOfMax(h, 6)
+- Test if the positionOfMax method only goes to n and can find the index of the max value
+
+rotateLeft(h, 4, -2)
+- Test if the rotateLeft method can handle bad input
+rotateLeft(h, 4, 2)
+- Test if the rotateLeft method only goes until n and shifts the elements beyond pos to the left while moving the element at pos to the end
+
+string d[5] = { "margaret", "margaret", "margaret", "tony", "tony" };
+
+countRuns(d, -2)
+- Test if the countRuns method can handle bad input
+countRuns(d, 5)
+- Test if the countRuns method only goes until n and works as it should
+countRuns(d, 0)
+- Test if the countRuns method can handle looking through no elements
+
+string g[4] = { "rishi", "margaret", "liz", "theresa" };
+
+differ(h, -1, g, 4)
+- Test if the differ method can handle bad input
+differ(h, 1, g, -4)
+- Test if the differ method can handle bad input
+differ(h, 1, g, 4)
+- Test if we reach the end of a1 and they have both been the same until now
+differ(h, 2, g, 1)
+- Test if we reach the end of a2 and they have both been the same until now
+differ(h, 2, g, 2)
+- Test if we reach the end of a1 and a2 and they have both been the same until now
+differ(h, 5, g, 4)
+- Test if the method works as expected and only goes until n1 and n2 for a1 and a2 respectively
+
+string f[3] = { "liz", "gordon", "tony" };
+
+flip(f, -2)
+- Test if the flip method can handle bad input
+flip(f, 3)
+- Test if the flip method only goes to n and works as expected
+
+string e[4] = { "gordon", "tony", "", "john" };
+
+subsequence(h, -1, e, 4)
+- Test if the subsequence method can handle bad input
+subsequence(h, 1, e, -4)
+- Test if the subsequence method can handle bad input
+subsequence(h, 3, e, 4)
+- Test if the subsequence method can handle when a1 is smaller than a2
+subsequence(h, 7, e, 4)
+- Test if the subsequence method only goes until n1 and n2 for a1 and a2 respectively and works as expected
+
+
+lookupAny(h, -1, f, 3)
+- Test if the lookupAny method can handle bad input
+lookupAny(h, 1, f, -3)
+- Test if the lookupAny method can handle bad input
+lookupAny(h, 7, f, 3)
+- Test if the lookupAny method works as expected and only goes until n1 and n2 for a1 and a2 respectively
+
+split(h, -2, "liz")
+- Test if the split method can handle bad input
+split(h, 6, "liz")
+- Test if the split method only goes to n, sorts the array, and works as expected
